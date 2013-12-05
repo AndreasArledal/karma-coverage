@@ -109,7 +109,7 @@ describe 'reporter', ->
 
     beforeEach ->
       rootConfig =
-        basePath: '/base'
+        basePath: '/base',
         coverageReporter: dir: 'path/to/coverage/',
         writeJsonFile: true
       emitter = new events.EventEmitter
@@ -159,8 +159,9 @@ describe 'reporter', ->
     it 'should not store coverage json if config.writeJsonFile is not set', ->
       # Set up config this test case
       rootConfig =
+        basePath: '/base',
         coverageReporter: dir: 'path/to/coverage/'
-      reporter = new m.CoverageReporter rootConfig, emitter, mockHelper, mockLogger
+      reporter = new m.CoverageReporter rootConfig, mockHelper, mockLogger
       reporter.onRunStart()
 
       result =
